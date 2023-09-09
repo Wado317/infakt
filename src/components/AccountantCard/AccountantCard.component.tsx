@@ -44,7 +44,6 @@ const AccountantCard = ({
           header="Średnia cena netto usługi / m-c"
           content={`${PRICE} PLN`}
         />
-
         <Button text="Dowiedz się więcej" />
       </CardFlex>
     </Card>
