@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Image from "../Image/Image.component";
 
 interface StyledTextProps {
-  heading?: boolean;
+  heading?: string;
 }
 
 type Props = {
@@ -30,7 +30,7 @@ export const AccountantSection = ({ imgSrc, firstName, lastName }: Props) => {
     <Flex>
       <Image src={imgSrc} alt="avatar" />
       <div>
-        <StyledText heading>{HEADER}</StyledText>
+        <StyledText heading={true.toString()}>{HEADER}</StyledText>
         <StyledText>{`${firstName} ${lastName}`}</StyledText>
       </div>
     </Flex>

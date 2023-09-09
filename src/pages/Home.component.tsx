@@ -43,9 +43,11 @@ const CardContainer = styled.div`
 `;
 
 const Home = () => {
-  const [userData, setUserData] = useState<AccountantType[] | null>(null); // Use the AccountantType type
+  const [userData, setUserData] = useState<AccountantType[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
     const fetchData = async () => {
       try {
         const response = await fetch(
@@ -54,32 +56,36 @@ const Home = () => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
-        const data: AccountantResponseType = await response.json(); // Use the AccountantResponseType type
+        const data = await response.json();
 
         setUserData(data.results);
+        setIsLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error);
+        setIsLoading(false);
       }
     };
 
     fetchData();
   }, []);
-  console.log(userData);
 
   return (
     <>
-      <img src="/icons/logo-infakt.svg" height={100} width={100} alt="logo" />
       <CardContainer>
-        {userData?.map((accountant) => (
-          <AccountantCard
-            key={accountant.login.uuid}
-            firstName={accountant.name.first}
-            lastName={accountant.name.last}
-            imgSrc={accountant.picture.thumbnail}
-            email={accountant.email}
-            cell={accountant.cell}
-          />
-        ))}
+        {isLoading ? (
+          <>loading...</>
+        ) : (
+          userData?.map((accountant) => (
+            <AccountantCard
+              key={accountant.login.uuid}
+              firstName={accountant.name.first}
+              lastName={accountant.name.last}
+              imgSrc={accountant.picture.thumbnail}
+              email={accountant.email}
+              cell={accountant.cell}
+            />
+          ))
+        )}
       </CardContainer>
     </>
   );

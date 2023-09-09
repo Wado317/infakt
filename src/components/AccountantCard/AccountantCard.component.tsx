@@ -37,7 +37,11 @@ const AccountantCard = ({
           firstName={firstName}
           lastName={lastName}
         />
-        <TextSection header="E-mail" content={email} underline />
+        <TextSection
+          header="E-mail"
+          content={email}
+          underline={true.toString()}
+        />
         <TextSection header="Telefon" content={cell} />
         <TextSection
           header="Średnia cena netto usługi / m-c"

@@ -1,14 +1,14 @@
 import styled from "styled-components";
 
 interface StyledTextProps {
-  heading?: boolean;
-  underline?: boolean;
+  heading?: string;
+  underline?: string;
 }
 
 type Props = {
   header: string;
   content: string;
-  underline?: boolean;
+  underline?: string;
 };
 
 const StyledText = styled.p<StyledTextProps>`
@@ -26,7 +26,7 @@ const Flex = styled.div`
 const TextSection = ({ header, content, underline }: Props) => {
   return (
     <Flex>
-      <StyledText heading>{header}</StyledText>
+      <StyledText heading={true.toString()}>{header}</StyledText>
       <StyledText underline={underline}>{content}</StyledText>
     </Flex>
   );

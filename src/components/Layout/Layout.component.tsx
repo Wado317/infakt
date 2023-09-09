@@ -1,9 +1,17 @@
 import { PropsWithChildren } from "react";
 import styled from "styled-components";
+import Header from "../Header/Header.component";
+
+const Flex = styled.div`
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+`;
 
 const StyledLayout = styled.div`
   margin-left: auto;
   margin-right: auto;
+  margin-top: 40px;
   max-width: 100%;
   padding-left: 96px;
   padding-right: 96px;
@@ -24,7 +32,12 @@ const StyledLayout = styled.div`
   }
 `;
 const Layout = ({ children }: PropsWithChildren) => {
-  return <StyledLayout>{children}</StyledLayout>;
+  return (
+    <Flex>
+      <Header />
+      <StyledLayout>{children}</StyledLayout>
+    </Flex>
+  );
 };
 
 export default Layout;
