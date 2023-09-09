@@ -1,9 +1,7 @@
-import React from "react";
 import styled from "styled-components";
 import { AccountantSection } from "../AccountantSection/AccountantSection.component";
 import Button from "../Button/Button.component";
 import Card from "../Card/Card.component";
-import Image from "../Image/Image.component";
 import TextSection from "../TextSection/TextSection.component";
 
 const CardFlex = styled.div`
@@ -20,6 +18,7 @@ type Props = {
   cell: string;
   firstName: string;
   lastName: string;
+  gender: string;
 };
 
 const AccountantCard = ({
@@ -28,20 +27,18 @@ const AccountantCard = ({
   cell,
   firstName,
   lastName,
+  gender,
 }: Props) => {
   return (
-    <Card width="300px">
+    <Card width="300px" height="376px">
       <CardFlex>
         <AccountantSection
           imgSrc={imgSrc}
           firstName={firstName}
           lastName={lastName}
+          gender={gender}
         />
-        <TextSection
-          header="E-mail"
-          content={email}
-          underline={true.toString()}
-        />
+        <TextSection header="E-mail" content={email} underline />
         <TextSection header="Telefon" content={cell} />
         <TextSection
           header="Średnia cena netto usługi / m-c"

@@ -9,9 +9,7 @@ const Flex = styled.div`
 `;
 
 const StyledLayout = styled.div`
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 40px;
+  margin: 40px auto;
   max-width: 100%;
   padding-left: 96px;
   padding-right: 96px;

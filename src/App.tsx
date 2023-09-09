@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import Layout from "./components/Layout/Layout.component";
-import Home from "./pages/Home.component";
+import Accountants from "./pages/Accountants.page";
+import Home from "./pages/Home.page";
 
 export enum Page {
   Home = "home",
@@ -17,7 +18,7 @@ function App() {
     <Layout>
       <Routes>
         <Route path={PAGES_PATH[Page.Home]} element={<Home />} />
-        <Route path={PAGES_PATH[Page.Ksiegowi]} element={<Home />} />
+        <Route path={PAGES_PATH[Page.Ksiegowi]} element={<Accountants />} />
       </Routes>
     </Layout>
   );

@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Page, PAGES_PATH } from "../../App";
 
 type TabProps = {
-  active?: string;
+  $active?: boolean;
 };
 
 const StyledHeader = styled.header`
@@ -32,27 +32,43 @@ const Box = styled.div`
 `;
 
 const Tab = styled(Link)<TabProps>`
-  padding: 10px 15px;
-  background-color: ${(props) => (props.active ? "#0056b3" : "transparent")};
-  border-radius: 5px;
-  color: black;
+  width: fit-content;
+  background-color: ${(props) => (props.$active ? "#aadbff" : "#e3f2fd")};
+  border-radius: 8px;
+  border: none;
+  padding: 8px 16px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
   text-decoration: none;
+  color: #1e88e5;
+  font-weight: 600;
 
   &:hover {
-    background-color: #0056b3;
+    background-color: #ceeaff;
+  }
+  &:active {
+    background-color: #aadbff;
   }
 `;
 
 const Header = () => {
+  const [active, setActive] = useState(true);
   return (
     <StyledHeader>
       <LogoImage src="/icons/logo-infakt.svg" alt="logo" />
       <TabsContainer>
-        <Tab active={true.toString()} to={PAGES_PATH[Page.Home]}>
+        <Tab
+          $active={active}
+          to={PAGES_PATH[Page.Home]}
+          onClick={() => setActive(true)}
+        >
           Strona Główna
         </Tab>
-        <Tab active={false.toString()} to={PAGES_PATH[Page.Ksiegowi]}>
+        <Tab
+          $active={!active}
+          to={PAGES_PATH[Page.Ksiegowi]}
+          onClick={() => setActive(false)}
+        >
           Księgowi
         </Tab>
       </TabsContainer>

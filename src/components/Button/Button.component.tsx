@@ -29,6 +29,7 @@ const Text = styled.p`
   font-size: 14px;
   font-style: normal;
 `;
+
 const Button = ({ text, onClick }: Props) => {
   return (
     <StyledButton onClick={onClick}>

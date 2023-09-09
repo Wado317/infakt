@@ -2,19 +2,20 @@ import styled from "styled-components";
 import Image from "../Image/Image.component";
 
 interface StyledTextProps {
-  heading?: string;
+  $heading?: boolean;
 }
 
 type Props = {
   imgSrc: string;
   firstName: string;
   lastName: string;
+  gender: string;
 };
 
 const StyledText = styled.p<StyledTextProps>`
-  color: ${(props) => (props.heading ? "#54585C" : "#000")};
-  font-size: ${(props) => (props.heading ? "16px" : "24px")};
-  font-weight: ${(props) => (props.heading ? 400 : 700)};
+  color: ${(props) => (props.$heading ? "#54585C" : "#000")};
+  font-size: ${(props) => (props.$heading ? "16px" : "24px")};
+  font-weight: ${(props) => (props.$heading ? 400 : 700)};
 `;
 
 const Flex = styled.div`
@@ -23,14 +24,18 @@ const Flex = styled.div`
   gap: 16px;
 `;
 
-const HEADER = "Twoja księgowa";
-
-export const AccountantSection = ({ imgSrc, firstName, lastName }: Props) => {
+export const AccountantSection = ({
+  imgSrc,
+  firstName,
+  lastName,
+  gender,
+}: Props) => {
+  const HEADER = gender === "female" ? "Twoja księgowa" : "Twój księgowy";
   return (
     <Flex>
       <Image src={imgSrc} alt="avatar" />
       <div>
-        <StyledText heading={true.toString()}>{HEADER}</StyledText>
+        <StyledText $heading>{HEADER}</StyledText>
         <StyledText>{`${firstName} ${lastName}`}</StyledText>
       </div>
     </Flex>

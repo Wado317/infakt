@@ -1,21 +1,21 @@
 import styled from "styled-components";
 
-interface StyledTextProps {
-  heading?: string;
-  underline?: string;
-}
+type StyledTextProps = {
+  $heading?: boolean;
+  $underline?: boolean;
+};
 
 type Props = {
   header: string;
   content: string;
-  underline?: string;
+  underline?: boolean;
 };
 
 const StyledText = styled.p<StyledTextProps>`
-  color: ${(props) => (props.heading ? "#54585C" : "#000")};
-  font-size: ${(props) => (props.heading ? "14px" : "16px")};
-  text-decoration: ${(props) => props.underline && "underline"};
-  line-height: ${(props) => (props.heading ? "20px" : "24px")};
+  color: ${(props) => (props.$heading ? "#54585C" : "#000")};
+  font-size: ${(props) => (props.$heading ? "14px" : "16px")};
+  text-decoration: ${(props) => props.$underline && "underline"};
+  line-height: ${(props) => (props.$heading ? "20px" : "24px")};
 `;
 
 const Flex = styled.div`
@@ -26,8 +26,8 @@ const Flex = styled.div`
 const TextSection = ({ header, content, underline }: Props) => {
   return (
     <Flex>
-      <StyledText heading={true.toString()}>{header}</StyledText>
-      <StyledText underline={underline}>{content}</StyledText>
+      <StyledText $heading>{header}</StyledText>
+      <StyledText $underline={underline}>{content}</StyledText>
     </Flex>
   );
 };
