@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Page, PAGES_PATH } from "../../App";
+import MobileMenu from "../MobileMenu/MobileMenu.component";
 
 type TabProps = {
   $active?: boolean;
@@ -25,13 +26,23 @@ const LogoImage = styled.img`
 const TabsContainer = styled.div`
   display: flex;
   gap: 20px;
+  @media (max-width: 700px) {
+    display: none;
+  }
 `;
 
 const Box = styled.div`
   width: 100px;
+
+  @media (max-width: 700px) {
+    display: none;
+  }
 `;
 
 const Tab = styled(Link)<TabProps>`
+  display: flex;
+  text-align: center;
+  align-items: center;
   width: fit-content;
   background-color: ${(props) => (props.$active ? "#aadbff" : "#e3f2fd")};
   border-radius: 8px;
@@ -73,6 +84,7 @@ const Header = () => {
         </Tab>
       </TabsContainer>
       <Box />
+      <MobileMenu />
     </StyledHeader>
   );
 };
