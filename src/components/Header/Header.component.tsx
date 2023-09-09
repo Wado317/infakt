@@ -21,6 +21,7 @@ const StyledHeader = styled.header`
 
 const LogoImage = styled.img`
   width: 100px;
+  cursor: pointer;
 `;
 
 const TabsContainer = styled.div`
@@ -66,7 +67,9 @@ const Header = () => {
   const [active, setActive] = useState(true);
   return (
     <StyledHeader>
-      <LogoImage src="/icons/logo-infakt.svg" alt="logo" />
+      <Link to="/">
+        <LogoImage src="/icons/logo-infakt.svg" alt="logo" />
+      </Link>
       <TabsContainer>
         <Tab
           $active={active}
