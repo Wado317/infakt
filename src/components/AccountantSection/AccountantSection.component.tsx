@@ -22,6 +22,7 @@ const Flex = styled.div`
   display: flex;
   align-items: center;
   gap: 16px;
+  height: 64px;
 `;
 
 export const AccountantSection = ({
