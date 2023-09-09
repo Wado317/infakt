@@ -10,6 +10,7 @@ type TabProps = {
 
 const StyledHeader = styled.header`
   display: flex;
+  position: fixed;
   width: 100%;
   align-items: center;
   justify-content: space-between;
