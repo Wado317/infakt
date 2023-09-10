@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
 import AccountantCard from "../components/AccountantCard/AccountantCard.component";
 import Button from "../components/Button/Button.component";
@@ -50,22 +50,22 @@ const Accountants = () => {
   const [page, setPage] = useState(1);
   const [data, setData] = useState<AccountantType[]>([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setIsLoading(true);
-        const response = await fetch(
-          `https://randomuser.me/api/?results=4&page=${page}`
-        );
-        const jsonData = await response.json();
-        setData([...data, ...jsonData.results]);
-        setIsFirstLoading(false);
-        setIsLoading(false);
-      } catch (error) {
-        console.log();
-      }
-    };
+  const fetchData = useCallback(async () => {
+    try {
+      setIsLoading(true);
+      const response = await fetch(
+        `https://randomuser.me/api/?results=4&page=${page}`
+      );
+      const jsonData = await response.json();
+      setData([...data, ...jsonData.results]);
+      setIsFirstLoading(false);
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
+  }, [page, data]);
 
+  useEffect(() => {
     fetchData();
   }, [page]);
 
