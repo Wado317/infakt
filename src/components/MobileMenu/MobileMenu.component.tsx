@@ -3,12 +3,16 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const MobileMenuWrapper = styled.div<{ isOpen: boolean }>`
+interface MobileMenuWrapperProps {
+  $isOpen: boolean;
+}
+
+const MobileMenuWrapper = styled.div<MobileMenuWrapperProps>`
   position: fixed;
   display: flex;
   justify-content: center;
   top: 0;
-  right: ${({ isOpen }) => (isOpen ? "0" : "-100%")};
+  right: ${({ $isOpen }) => ($isOpen ? "0" : "-100%")};
   width: 100%;
   height: 100vh;
   background-color: #fff;
@@ -74,7 +78,7 @@ const MobileMenu: React.FC = () => {
           width={20}
         />
       </ToggleButton>
-      <MobileMenuWrapper isOpen={isOpen}>
+      <MobileMenuWrapper $isOpen={isOpen}>
         <ListContainer>
           <ListItem>
             <StyledLink to="/" onClick={() => setIsOpen(false)}>
